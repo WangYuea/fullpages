@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /*第一屏幕*/
+    .first {
+    }
+
+    .first .logo {
+      margin: 0 auto;
+      width: 251px;
+      height: 186px;
+      background-image: url("images/logo.png");
+      margin-top: 80px;
+    }
+    .first .text{
+      text-align: center;
+      margin: 80px 0;
+    }
+    .first .text img{
+      margin: 0 34px;
+      opacity: 0.3;
+    }
+    .first .extra{
+      text-align: center;
+    }
+
+    /*动画*/
+    .first.current .text img{
+      opacity: 1;
+      margin: 0 5px;
+      transition: all .5s;
+    }
+    /*第二屏幕*/
+    .second {
+    }
+    .second .shield{/*盾牌*/
+      width: 450px;
+      float: left;
+      margin-top:120px;
+      margin-left:100px;
+    }
+    .second .shield img:nth-child(1){
+      transform: translate(120px,230px) rotateY(30deg);
+    }
+    .second .shield img:nth-child(2){
+      transform: translate(220px,130px) rotateY(45deg);
+    }
+    .second .shield img:nth-child(3){
+      transform: translate(134px,430px) rotateY(80deg);
+    }
+    .second .shield img:nth-child(4){
+      transform: translate(134px,230px) rotateY(176deg);
+    }
+    .second .shield img:nth-child(5){
+      transform: translate(134px,40px) rotateY(98deg);
+    }
+    .second .shield img:nth-child(6){
+      transform: translate(134px,78px) rotateY(78deg);
+    }
+    .second .shield img:nth-child(7){
+      transform: translate(134px,115px) rotateY(30deg);
+    }
+    .second .shield img:nth-child(8){
+      transform: translate(134px,213px) rotateY(20deg);
+    }
+    .second .shield img:nth-child(9){
+      transform: translate(134px,145px) rotateY(10deg);
+    }
+
+    .second.current .shield img{
+      transform: none;
+      transition: all 1s ease-in-out;
+    }
+
+
+    .second .extra{/*右侧的文字*/
+      float: right;
+      margin-top:120px;
+      margin-right:100px;
+    }
+
+
+    /*第三屏幕*/
+    .three {
+    }
+    .three .info{
+      float: left;
+      margin-top: 150px;
+      margin-left: 100px;
+    }
+    .three .extra{
+      float: right;
+      margin-top: 120px;
+      margin-right: 100px;
+    }
+    .three .rocket{
+      position: absolute;
+      top:240px;
+      right:250px;
+      transform: translate(-500px,500px);
+    }
+    .three.current .rocket{
+      transform: none;
+      transition: all .3s ease-in;
+    }
+
+    /*第四屏幕*/
+    .four {
+    }
+
+    .four .search{
+      width: 530px;
+      height: 400px;
+      /*background-color: red;*/
+      float: left;
+      margin-top:150px;
+      margin-left:100px ;
+      position: relative;
+    }
+    .four .search .searchbar{
+      width: 529px;
+      height: 66px;
+      background: url("images/search.png")no-repeat;
+      transform: translate(-120%);
+    }
+    .four .search .keys{
+      /*width: 99px;*/
+      width: 0px;
+      height: 22px;
+      background: url("images/key.png")no-repeat;
+      position: absolute;
+      left:15px;
+      top:25px;
+    }
+    .four .search .wrap{
+      width: 529px;
+      height: 372px;
+      margin-top: -10px;
+      /*藏起来*/
+      overflow: hidden;
+    }
+    .four .search .wrap .box{
+      width: 100%;
+      height: 100%;
+      background: url("images/result.png");
+      transform: translateY(-120%);
+    }
+
+    .four .extra{
+      width:612px ;
+      height:300px ;
+      float: right;
+      margin-top:150px;
+      margin-right:100px ;
+      background: url("images/info_4.png") center no-repeat;
+
+    }
+    .four.current .search .searchbar{
+      transform: none;
+      transition: all 1s ease-in;
+    }
+    .four.current .search .keys{
+      animation: move 1s steps(5) 1.5s forwards;
+    }
+    .four.current .search .wrap .box{
+      transform: none;
+      transition: all 1s ease-in 3s;
+    }
+    @keyframes move {
+      0%{
+
+      }
+      100%{
+        width: 99px;
+      }
+    }
+
+
+    /*第五屏幕*/
+    .five {
+    }
+
+    .five > div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .five .extra{
+      width: 1077px;
+      height: 134px;
+      background: url("images/info_5.png") no-repeat;
+      flex: 1;
+    }
+    .five .browser{
+      flex: 3;
+      width: 1004px;
+      background-color: rgba(255,255,255,.3);
+      /*height: 400px;*/
+      position: relative;
+      /*overflow: hidden;*/
+    }
+    .five .browser .left,
+    .five .browser .right,
+    .five .browser .top,
+    .five .browser .bottom{
+      position: absolute;
+      background-color: #FFF;
+    }
+    .five .browser .left,
+    .five .browser .right{
+      width: 1px;
+      height: 100%;
+      top:0;
+    }
+    .five .browser .top,
+    .five .browser .bottom{
+      width: 100%;
+      height: 1px;
+      left: 0;
+    }
+    .five .browser .left{
+      left:0;
+      transform: translateY(-120%);
+    }
+    .five .browser .right{
+      right:0;
+      transform: translateY(120%);
+    }
+    .five .browser .top{
+      top:0;
+      transform: translateX(120%);
+    }
+    .five .browser .bottom{
+      bottom:0;
+    }
+    
+    .five .browser .toolbar{
+      width: 1004px;
+      height: 79px;
+      background: url("images/toolbar.png") no-repeat;
+      opacity: 0;
+    }
+    .five .browser .task{
+      width: 394px;
+      height: 29px;
+      background: url("images/extra.png") no-repeat;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    .five .browser .line{
+      width: 100%;
+      height: 2px;
+      background-color: #FFF;
+      position: absolute;
+      bottom: 30px;
+    }
+    .five .browser .wrap{
+      /*width: 920px;*/
+      width: 0;
+      height: 28px;
+      /*隐藏*/
+      overflow: hidden;
+      position: absolute;
+      left:72px;
+      top:30px;
+    }
+    .five .browser .wrap .box{
+      width: 914px;
+      height: 26px;
+      border:1px solid #FFF;
+      border-radius: 3px ;
+
+    }
+
+    /*动画*/
+    .five.current .browser .left,
+    .five.current .browser .top,
+    .five.current .browser .right{
+
+      transform: none;
+      transition: all 1s ease;
+    }
+    .five.current .browser .toolbar{
+      opacity: 1;
+      transition: all 1s ease 1s;
+    }
+    .five.current .browser .wrap{
+      width: 920px;
+      transition: all 1s ease 2s;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="fullpage">
+  <div class="section first">
+    <div class="logo"></div>
+    <div class="text">
+      <img src="images/text_1.png" alt="">
+      <img src="images/text_2.png" alt="">
+      <img src="images/text_3.png" alt="">
+      <img src="images/text_4.png" alt="">
+      <img src="images/text_5.png" alt="">
+      <img src="images/text_6.png" alt="">
+      <img src="images/text_7.png" alt="">
+      <img src="images/text_8.png" alt="">
+
+    </div>
+    <div class="extra">
+      <img src="images/info_1.png" alt="">
+    </div>
+  </div>
+  <div class="section second">
+   <div class="shield">
+     <img src="images/shield_1.png" alt="">
+     <img src="images/shield_2.png" alt="">
+     <img src="images/shield_3.png" alt="">
+     <img src="images/shield_4.png" alt="">
+     <img src="images/shield_5.png" alt="">
+     <img src="images/shield_6.png" alt="">
+     <img src="images/shield_7.png" alt="">
+     <img src="images/shield_8.png" alt="">
+     <img src="images/shield_9.png" alt="">
+
+   </div>
+    <div class="extra">
+      <img src="images/info_2.png" alt="">
+    </div>
+  </div>
+  <div class="section three">
+    <div class="info">
+      <img src="images/info_3.png" alt="">
+    </div>
+    <div class="extra"><img src="images/circle.png" alt=""></div>
+    <div class="rocket"><img src="images/rocket.png" alt=""></div>
+  </div>
+  <div class="section four ">
+    <div class="search">
+      <div class="searchbar"></div>
+      <div class="keys"></div>
+      <div class="wrap">
+        <div class="box"></div>
+      </div>
+    </div>
+    <div class="extra"></div>
+  </div>
+  <div class="section five">
+   <div class="extra"></div>
+    <div class="browser">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="toolbar"></div>
+      <div class="wrap">
+        <div class="box"></div>
+      </div>
+      <div class="task"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+</div>
+
+<!--引入jquery文件-->
+<script src="js/jquery-1.8.3.min.js"></script>
+<!--引入fullpage.js文件-->
+<script src="js/jquery.fullPage1.min.js"></script>
+<script>
+
+  $(function () {
+    /*fullpage方法中传入的是对象*/
+    /*对象中:成对的属性,也可以有回调函数*/
+    $('#fullpage').fullpage({
+      /*设置每个分屏的背景颜色*/
+      sectionsColor: ["#0da5d6", "#2AB561", "#DE8910", "#16BA9D", "#0DA5D6"],
+      /*滚屏之后*/
+      afterLoad: function (link,index) {
+
+        $(".section").removeClass("current");
+        setTimeout(function () {
+          $(".section").eq(index-1).addClass("current");
+        },100);
+
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
